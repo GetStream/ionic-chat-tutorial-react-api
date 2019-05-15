@@ -8,14 +8,16 @@ exports.token = async (req, res) => {
     try {
         const data = req.body;
 
-        const apiKey = process.STREAM_API_KEY;
-        const apiSecret = process.env.STREAM_API_SECRET;
+        let apiKey;
+        let apiSecret;
 
-        // Heroku
         if (process.env.STREAM_URL) {
-            const [apiKey, apiSecret] = process.env.STREAM_URL.substr(8)
+            [apiKey, apiSecret] = process.env.STREAM_URL.substr(8)
                 .split('@')[0]
                 .split(':');
+        } else {
+            apiKey = process.STREAM_API_KEY;
+            apiSecret = process.env.STREAM_API_SECRET;
         }
 
         const client = new StreamChat(apiKey, apiSecret);
@@ -30,6 +32,7 @@ exports.token = async (req, res) => {
 
         res.status(200).json({ user, token, apiKey });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: error.message });
     }
 };
