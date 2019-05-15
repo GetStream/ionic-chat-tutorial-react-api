@@ -1,10 +1,12 @@
 # How to Build an Ionic Chat App with React and Stream
 
-This is the API repo for the tutorial on Medium titled [How to Build an Ionic Chat App with React and Stream](https://medium.com/@nparsons08).
+This is the API repo for the tutorial on Medium titled [How to Build an Ionic Chat App with React and Stream](https://medium.com/@nparsons08). This API is provided to handle token generation and user creation.
 
 The tutorial walks you through how to build a mobile application with Ionic, React and Chat powered by [Stream](https://getstream.io/chat).
 
-> An API is provided to handle token generation and user creation, which can be found on [GitHub](https://github.com/GetStream/ionic-chat-tutorial-react-api). Alternatively, you can click the Deploy with Heroku button below to spin up your API in one click!
+> The base repo can be found on [GitHub](https://github.com/GetStream/ionic-chat-tutorial-react). 
+
+To spin up the API, click the Deploy with Heroku button below!
 
 <a href="https://heroku.com/deploy?template=https://github.com/GetStream/ionic-chat-tutorial-react-api" target="_blank">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
