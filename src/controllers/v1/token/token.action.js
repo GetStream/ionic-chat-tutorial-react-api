@@ -8,10 +8,17 @@ exports.token = async (req, res) => {
     try {
         const data = req.body;
 
-        const client = new StreamChat(
-            process.env.STREAM_API_KEY,
-            process.env.STREAM_API_SECRET
-        );
+        const apiKey = process.STREAM_API_KEY;
+        const apiSecret = process.env.STREAM_API_SECRET;
+
+        // Heroku
+        if (process.env.STREAM_URL) {
+            const [apiKey, apiSecret] = process.env.STREAM_URL.substr(8)
+                .split('@')[0]
+                .split(':');
+        }
+
+        const client = new StreamChat(apiKey, apiSecret);
 
         const user = Object.assign({}, data, {
             id: md5(data.email),
@@ -21,7 +28,7 @@ exports.token = async (req, res) => {
         const token = client.createToken(user.id);
         await client.updateUsers([user]);
 
-        res.status(200).json({ user, token });
+        res.status(200).json({ user, token, apiKey });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
