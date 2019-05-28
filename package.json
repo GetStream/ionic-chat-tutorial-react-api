@@ -1,7 +1,7 @@
 {
     "name": "api",
     "version": "0.0.1",
-    "description": "Feather API",
+    "description": "Stream Chat API",
     "engines": {
         "node": ">=11.14.0"
     },
